@@ -1,0 +1,46 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/missing-and-repeating-numbers_8230733?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+#include <bits/stdc++.h>
+
+TC nd SC -> o(n)
+pair<int,int> missingAndRepeating(vector<int> &arr, int n)
+{
+	// Write your code here 
+	// vector<int> hsh(n,0);
+
+	// for(int i=0;i<n;i++){
+	// 	hsh[arr[i]]++;
+	// }
+
+	// int m=0,r=0;
+	// for(int i=1;i<=n;i++){
+	// 	if(hsh[i]==0) {m = i;}
+	// 	else{
+	// 		if(hsh[i]>1){
+	// 			r=i;
+	// 		}
+	// 	}
+	// }
+	// return make_pair(m,r);
+  
+  
+  // TC: o(n) and SC: o(1)
+	int repeating = 0, missing = 0;
+
+    // Find the repeating and missing elements
+    for (int i = 0; i < n; i++) {
+        if (arr[abs(arr[i]) - 1] > 0) arr[abs(arr[i]) - 1] *= -1;
+        else
+            repeating = abs(arr[i]);
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > 0) {
+            missing = i + 1;
+            break;
+        }
+    }
+
+    return make_pair(missing, repeating);
+	
+}
