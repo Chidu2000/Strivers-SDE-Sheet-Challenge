@@ -1,0 +1,23 @@
+Problem link : https://www.codingninjas.com/codestudio/problems/majority-element-ii_8230738?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+#include <bits/stdc++.h>
+vector<int> majorityElementII(vector<int> &arr)
+{
+    vector<int> ans;
+    int maxi = *max_element(arr.begin(), arr.end());
+    int n = arr.size();
+
+    int hsh[maxi+1]={0};
+
+    for(int i=0;i<n;i++){
+        hsh[arr[i]]++;
+    }
+
+    for(int i=0;i<=maxi;i++){
+      if (hsh[i] > floor(n/3)) {
+          ans.push_back(i);
+      }
+    }
+    return ans;
+
+}
