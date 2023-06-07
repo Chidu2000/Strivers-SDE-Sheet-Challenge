@@ -1,0 +1,18 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/cycle-detection-in-a-singly-linked-list_8230683?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+bool detectCycle(Node *head)
+{
+    if(head==NULL || head->next==NULL) return false;
+
+    Node*slow = head;
+    Node*fast = head;
+
+    while(fast->next && fast->next->next){
+        fast = fast->next->next;
+        slow = slow->next;
+
+        if(fast==slow) return true;
+    }
+
+    return false;
+}
