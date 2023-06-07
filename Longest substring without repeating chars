@@ -1,0 +1,23 @@
+Problem link : https://www.codingninjas.com/codestudio/problems/longest-substring-without-repeating-characters_8230684?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+#include <bits/stdc++.h> 
+int uniqueSubstrings(string input)
+{
+    unordered_set<char> st;
+    int n = input.size();
+    int start=0,end=0,maxLen=0;
+
+    while(end<n){
+        if(st.find(input[end])==st.end()){
+            st.insert(input[end]);
+            int curLen = end-start+1;
+            maxLen = max(maxLen,curLen);
+            end++;
+        }else{
+            st.erase(input[start]);
+            start++;
+        }
+    }
+
+    return maxLen;
+}
