@@ -1,0 +1,19 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/intersection-of-two-linked-lists_8230688?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+Node* findIntersection(Node *firstHead, Node *secondHead)
+{
+    if (firstHead == NULL || secondHead == NULL) {
+        return NULL;
+    }
+
+    Node* a = firstHead;
+    Node* b = secondHead;
+
+    while (a != b) {
+        a = (a == NULL) ? secondHead : a->next;
+        b = (b == NULL) ? firstHead : b->next;
+    }
+
+    return a;
+}
