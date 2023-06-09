@@ -1,0 +1,20 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/day-13-print-permutations-string_8230703?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+#include <bits/stdc++.h> 
+int fact(int n){
+    if(n<=1) return 1;
+    return n*fact(n-1);
+}
+
+vector<string> findPermutations(string &s) {
+    vector<string> permutes;
+    sort(s.begin(), s.end());
+    
+    for(int i=0;i<fact(s.length());i++){
+        permutes.push_back(s);
+        next_permutation(s.begin(),s.end());
+    }
+
+    return permutes;
+}
