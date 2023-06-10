@@ -1,0 +1,23 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/longest-consecutive-sequence_8230708?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+#include <bits/stdc++.h>
+int lengthOfLongestConsecutiveSequence(vector<int> &arr, int n) {
+    if (n == 0) return 0;
+    sort(arr.begin(), arr.end());
+
+    int maxLen = 1;
+    int currentLen = 1;
+
+    for(int i = 1; i < n; i++){
+        if (arr[i] == arr[i - 1] + 1) {
+            currentLen++;
+        } else if (arr[i] != arr[i - 1]) {
+            maxLen = max(maxLen, currentLen);
+            currentLen = 1;
+        }
+    }
+
+    maxLen = max(maxLen, currentLen);
+    return maxLen;
+}
