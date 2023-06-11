@@ -1,0 +1,8 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/find-nth-root-of-m_8230799?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+def NthRoot(n: int, m: int) -> int:   
+    if round(m**(1/n))**n == m:  
+        return round(m**(1/n))
+    else:
+        return -1
