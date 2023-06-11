@@ -1,0 +1,49 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/single-element-in-a-sorted-array_8230826?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+#include<bits/stdc++.h>
+int singleNonDuplicate(vector<int>& arr)
+{
+	// binary search for optimization
+	int left = 0;
+    int right = arr.size() - 1;
+
+    while (left < right) {
+        int mid = left + (right - left) / 2;
+
+        if (mid % 2 == 0) {
+            if (arr[mid] == arr[mid + 1]) {
+                left = mid + 2;
+            } else {
+                right = mid;
+            }
+        } else {
+            if (arr[mid] == arr[mid - 1]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+    }
+
+    return arr[left];
+}
+
+
+
+
+Another approach:
+int singleNonDuplicate(vector<int>& arr)
+{
+	int n = arr.size();
+  unordered_map<int,int> hsh;
+  for(int i=0;i<n;i++){
+      hsh[arr[i]]++;
+  }
+  
+  for(auto it=hsh.begin();it!=hsh.end();it++){
+      if(it->second == 1){
+          return it->first;
+      }
+  }
+}
