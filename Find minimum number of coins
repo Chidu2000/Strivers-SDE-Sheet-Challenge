@@ -1,0 +1,25 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/find-minimum-number-of-coins_8230766?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+
+from os import *
+from sys import *
+from collections import *
+from math import *
+
+denominations = [1, 2, 5, 10, 20, 50, 100, 500, 1000]
+
+def findMinimumCoins(amount):
+	cnt = 0
+	n = len(denominations) - 1
+
+	for i in range(n, -1, -1):
+		if denominations[i] <= amount:
+			while amount >= denominations[i]:
+				cnt += 1
+				amount = amount - denominations[i]
+
+		if amount <= 0:
+			break
+
+	return cnt     
