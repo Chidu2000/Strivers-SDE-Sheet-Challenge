@@ -1,0 +1,17 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/k-th-permutation-sequence_8230822?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+#include<bits/stdc++.h>
+string kthPermutation(int n, int k) {
+    string stri;
+    for(int i=1;i<=n;i++){
+        stri+=to_string(i);
+    }
+
+    vector<string> ans;
+    sort(stri.begin(),stri.end());
+    do{
+        ans.push_back(stri);
+    }while(next_permutation(stri.begin(),stri.end()));
+
+    return ans[k-1];
