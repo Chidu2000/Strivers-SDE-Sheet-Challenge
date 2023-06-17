@@ -1,0 +1,26 @@
+Problem link: https://www.codingninjas.com/codestudio/problems/subsets-ii_8230855?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+#include <bits/stdc++.h> 
+void generateSubsets(int index, vector<int>& nums, vector<int>& current, vector<vector<int>>& subsets) {
+    subsets.push_back(current);  // Include the current subset
+
+    for (int i = index; i < nums.size(); ++i) {
+        if (i > index && nums[i] == nums[i - 1]) {
+            continue;  // Skip duplicate elements
+        }
+
+        current.push_back(nums[i]);  // Include the current element
+        generateSubsets(i + 1, nums, current, subsets);  // Generate subsets starting from the next index
+        current.pop_back();  // Backtrack
+    }
+}
+
+vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
+{
+    sort(arr.begin(), arr.end());  // Sort the input array to handle duplicate elements
+    vector<vector<int>> subsets;
+    vector<int> current;
+    generateSubsets(0, arr, current, subsets);
+    return subsets;
+}
