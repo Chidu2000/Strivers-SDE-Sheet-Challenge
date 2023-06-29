@@ -1,0 +1,30 @@
+Problem link: https://www.codingninjas.com/studio/problems/add-two-numbers-as-linked-lists_8230833?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+Node *addTwoNumbers(Node *num1, Node *num2)
+{
+    Node* dummy = new Node(0);
+    Node* current = dummy;
+    int carry=0;
+
+    while(num1|| num2|| carry){
+        int val1 = (num1)? num1->data:0;
+        int val2 = (num2)? num2->data:0;
+
+        int total = val1+val2+carry;
+
+        int sum = total%10;
+        carry = total/10;
+
+        current->next = new Node(sum);
+        current = current->next;
+
+        if(num1) num1 = num1->next;
+
+        if(num2) num2 = num2->next; 
+    }
+    return dummy->next;
+}
+
+input->     1->2->3->NULL
+            4->5->6->NULL
+output->    5->7->9->NULL
