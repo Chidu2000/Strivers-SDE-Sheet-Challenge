@@ -1,0 +1,20 @@
+problem link: https://www.codingninjas.com/studio/problems/kth-element-of-two-sorted-arrays_8230824?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+def ninjaAndLadoos(row1, row2, m, n, k):
+    left = max(0, k - n)
+    right = min(k, m)
+
+    while left < right:
+        mid = left + (right - left) // 2
+        if row2[k - mid - 1] <= row1[mid]:
+            right = mid
+        else:
+            left = mid + 1
+
+    if left == 0:
+        return row2[k - 1]
+    elif left == k:
+        return row1[k - 1]
+    else:
+        return max(row1[left - 1], row2[k - left - 1])  
