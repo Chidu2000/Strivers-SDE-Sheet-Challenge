@@ -1,0 +1,26 @@
+Problem link: https://www.codingninjas.com/studio/problems/power-set_8230797?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+#include <bits/stdc++.h> 
+vector<vector<int>> pwset(vector<int>v)
+{
+    int n = v.size();
+    vector<vector<int>> ans;
+    int subsetCnt = 1<<n;
+
+    for(int i=0;i<subsetCnt;i++){
+        vector<int> subsets;
+        for(int j=0;j<n;j++){
+            if(i & (1<<j)){
+                subsets.push_back(v[j]);
+            }
+        }
+        ans.push_back(subsets);
+    }
+
+    sort(ans.begin(),ans.end(),[](const vector<int>&a, const vector<int>&b){
+        return a.size()==b.size()? a<b : a.size()<b.size();
+    });
+
+    return ans;
+}
