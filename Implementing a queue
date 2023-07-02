@@ -1,0 +1,29 @@
+Problem link: https://www.codingninjas.com/studio/problems/implement-a-queue_8230848?challengeSlug=striver-sde-challenge&leftPanelTab=1
+
+
+#include <bits/stdc++.h> 
+class Queue {
+    public:
+        vector<int> v;
+        int j=0;
+
+        // Queue() {
+
+        // }
+
+        bool isEmpty() {
+            return j>=v.size();
+        }
+
+        void enqueue(int data) {
+            v.push_back(data);
+        }
+
+        int dequeue() {
+            return j>=v.size()?-1:v[j++];
+        }
+
+        int front() {
+            return j>=v.size()?-1:v[j];
+        }
+};
