@@ -1,0 +1,9 @@
+Problem link: https://www.codingninjas.com/studio/problems/reverse-words-in-a-string_8230698?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+def reverseString(str: str) -> str:   
+    return " ".join(str.split()[::-1])
+
+
+NOTE: The string that will be outputted should not contain trailing white spaces at either ends, and the multiple spaces between two words of a string will be omitted keeping a single space
+     and the reverse operation should happen with words and not with every character in that word of a string.
