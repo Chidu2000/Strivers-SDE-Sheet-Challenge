@@ -1,0 +1,25 @@
+Problem link: https://www.codingninjas.com/studio/problems/predecessor-and-successor-in-bst_8230742?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+void calc(BinaryTreeNode<int>* root, pair<int,int>&p, int key){
+    if(root==NULL) return;
+
+    if(root->data > p.first && root->data < key){
+        p.first = root->data;
+    }
+    if(root->data < p.second && root->data >key){
+        p.second = root->data;
+    }
+
+    calc(root->left,p,key);
+    calc(root->right,p,key);
+}
+
+pair<int,int> predecessorSuccessor(BinaryTreeNode<int>* root, int key)
+{
+    pair<int,int>p = {INT_MIN,INT_MAX};
+    calc(root,p,key);
+    if(p.first == INT_MIN) p.first = -1;
+    if(p.second == INT_MAX) p.second = -1;
+    return p;
+}
