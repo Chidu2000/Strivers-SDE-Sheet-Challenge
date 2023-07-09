@@ -1,0 +1,20 @@
+Problem link: https://www.codingninjas.com/studio/problems/pair-sum-in-bst_8230756?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+bool solve(BinaryTreeNode<int> *root,unordered_set<int> &st,int &k){
+    if(root==NULL) return false;
+
+    if(solve(root->left,st,k)) return true;
+    if(st.find(k- root->data)!=st.end()) return true;
+
+    st.insert(root->data);
+
+    if(solve(root->right,st,k)) return true;
+    return false;
+}
+
+bool pairSumBst(BinaryTreeNode<int> *root, int k)
+{
+    unordered_set<int> st;
+    return solve(root,st,k);
+}
