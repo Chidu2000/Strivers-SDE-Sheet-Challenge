@@ -1,0 +1,17 @@
+Problem link: https://www.codingninjas.com/studio/problems/diameter-of-binary-tree_8230762?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+int calcfnc(TreeNode<int>*root,int &maxdia){
+    if(!root) return 0;
+    int left = calcfnc(root->left, maxdia);
+    int right = calcfnc(root->right, maxdia);
+    maxdia = max(maxdia, left+right);
+    return 1+ max(left,right);
+}
+
+int diameterOfBinaryTree(TreeNode<int> *root)
+{
+    int maxdia = 0;
+    calcfnc(root,maxdia);
+    return maxdia;
+}
