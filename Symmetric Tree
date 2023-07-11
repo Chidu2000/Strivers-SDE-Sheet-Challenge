@@ -1,0 +1,18 @@
+Problem link: https://www.codingninjas.com/studio/problems/symmetric-tree_8230686?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+bool symmetric(BinaryTreeNode<int>* a, BinaryTreeNode<int>* b){
+    if(a==NULL && b!=NULL) return false;
+    if(a!=NULL && b==NULL) return false;
+
+    if(a==NULL && b==NULL) return true;
+    if(a->data != b->data) return false;
+    return symmetric(a->left,b->right) && symmetric(a->right,b->left);
+}
+
+bool isSymmetric(BinaryTreeNode<int>* root)
+{
+    if(!root) return true;
+    if(root->left==NULL && root->right==NULL) return false;
+    return symmetric(root->left,root->right);
+}
