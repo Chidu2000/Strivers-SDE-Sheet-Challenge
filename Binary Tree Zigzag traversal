@@ -1,0 +1,32 @@
+Problem link: https://www.codingninjas.com/studio/problems/binary-tree-zigzag-traversal_8230796?challengeSlug=striver-sde-challenge&leftPanelTab=0
+
+
+vector<int> zigZagTraversal(BinaryTreeNode<int> *root)
+{
+    vector<int> ans;
+    if(!root) return ans;
+    queue<BinaryTreeNode<int>*> q;
+    q.push(root);
+
+    bool left_right = true;
+    while(!q.empty()){
+        int size = q.size();
+        vector<int> row(size);
+
+        for(int i=0;i<size;i++){
+            BinaryTreeNode<int>* temp = q.front();
+            q.pop();
+
+            int idx = left_right? i: size-1-i;
+            row[idx] = temp->data;
+
+            if(temp->left) q.push(temp->left);
+            if(temp->right) q.push(temp->right);
+        }
+        left_right = !left_right;
+        for(auto i: row){
+            ans.push_back(i);
+        }
+    }
+    return ans;
+}
